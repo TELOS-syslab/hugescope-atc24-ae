@@ -1,0 +1,1379 @@
+[ 7741.075777] watchdog: BUG: soft lockup - CPU#49 stuck for 22s! [page migrateion:4861]
+[ 7741.075780] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 7741.075809]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 7741.075822] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 7741.075823] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 7741.075849] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 7741.075851] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 7741.075852] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 7741.075854] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 7741.075855] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 7741.075856] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 7741.075857] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 7741.075858] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 7741.075859] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 7741.075860] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 7741.075861] CR2: 00007ffd9ec23700 CR3: 0000000ae1ea8003 CR4: 00000000007626e0
+[ 7741.075862] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 7741.075863] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 7741.075864] PKRU: 55555554
+[ 7741.075865] Call Trace:
+[ 7741.075883]  pm_to_nvm+0x39/0x4f [kvm]
+[ 7741.075898]  begin_migration.cold+0x24/0x26 [kvm]
+[ 7741.075913]  pm+0x5f/0x70 [kvm]
+[ 7741.075916]  kthread+0x104/0x140
+[ 7741.075930]  ? begin_migration+0x40/0x40 [kvm]
+[ 7741.075932]  ? kthread_park+0x90/0x90
+[ 7741.075935]  ret_from_fork+0x1f/0x40
+[ 7748.658954] vmc q is not zero
+[ 7748.659022] close mem_tracker
+[ 7749.595684] rcu: INFO: rcu_sched self-detected stall on CPU
+[ 7749.595688] rcu: 	49-....: (14984 ticks this GP) idle=b46/1/0x4000000000000002 softirq=1743/1743 fqs=7382 
+[ 7749.595692] 	(t=15000 jiffies g=72593 q=116657)
+[ 7749.595694] NMI backtrace for cpu 49
+[ 7749.595696] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 7749.595697] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 7749.595698] Call Trace:
+[ 7749.595699]  <IRQ>
+[ 7749.595705]  dump_stack+0x6d/0x8b
+[ 7749.595708]  nmi_cpu_backtrace.cold+0x14/0x54
+[ 7749.595713]  ? lapic_can_unplug_cpu+0x80/0x80
+[ 7749.595716]  nmi_trigger_cpumask_backtrace+0xe8/0xf0
+[ 7749.595718]  arch_trigger_cpumask_backtrace+0x19/0x20
+[ 7749.595721]  rcu_dump_cpu_stacks+0x99/0xcb
+[ 7749.595723]  rcu_sched_clock_irq.cold+0x1d9/0x3c1
+[ 7749.595728]  update_process_times+0x2c/0x60
+[ 7749.595732]  tick_sched_handle+0x29/0x60
+[ 7749.595734]  tick_sched_timer+0x3d/0x80
+[ 7749.595736]  __hrtimer_run_queues+0xf7/0x270
+[ 7749.595737]  ? tick_sched_do_timer+0x60/0x60
+[ 7749.595739]  hrtimer_interrupt+0x109/0x220
+[ 7749.595741]  smp_apic_timer_interrupt+0x71/0x140
+[ 7749.595742]  apic_timer_interrupt+0xf/0x20
+[ 7749.595743]  </IRQ>
+[ 7749.595761] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 7749.595763] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 7749.595764] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 7749.595766] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 7749.595767] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 7749.595767] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 7749.595768] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 7749.595769] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 7749.595785]  ? pm_children+0xbd/0x100 [kvm]
+[ 7749.595801]  pm_to_nvm+0x39/0x4f [kvm]
+[ 7749.595816]  begin_migration.cold+0x24/0x26 [kvm]
+[ 7749.595830]  pm+0x5f/0x70 [kvm]
+[ 7749.595832]  kthread+0x104/0x140
+[ 7749.595844]  ? begin_migration+0x40/0x40 [kvm]
+[ 7749.595846]  ? kthread_park+0x90/0x90
+[ 7749.595848]  ret_from_fork+0x1f/0x40
+[ 7772.000501] BUG: Bad page state in process qemu-system-x86  pfn:d1f9235
+[ 7772.000505] page:fffff77587e48d40 refcount:0 mapcount:0 mapping:0000000000000000 index:0x1
+[ 7772.000506] flags: 0x50000000000001(locked)
+[ 7772.000509] raw: 0050000000000001 dead000000000100 dead000000000122 0000000000000000
+[ 7772.000510] raw: 0000000000000001 0000000000000000 00000000ffffffff 0000000000000000
+[ 7772.000511] page dumped because: PAGE_FLAGS_CHECK_AT_PREP flag set
+[ 7772.000512] bad because of flags: 0x1(locked)
+[ 7772.000513] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 7772.000544]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 7772.000556] CPU: 37 PID: 5032 Comm: qemu-system-x86 Tainted: G    B D    OEL    5.4.142+ #19
+[ 7772.000557] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 7772.000557] Call Trace:
+[ 7772.000565]  dump_stack+0x6d/0x8b
+[ 7772.000570]  bad_page.cold+0x80/0xb1
+[ 7772.000573]  check_new_page_bad+0x67/0x80
+[ 7772.000577]  get_page_from_freelist+0xf41/0x1400
+[ 7772.000580]  __alloc_pages_nodemask+0x173/0x320
+[ 7772.000582]  alloc_pages_current+0x87/0xe0
+[ 7772.000587]  __page_cache_alloc+0x72/0x90
+[ 7772.000589]  __do_page_cache_readahead+0xa1/0x1a0
+[ 7772.000591]  ondemand_readahead+0x17c/0x2f0
+[ 7772.000593]  page_cache_async_readahead+0xb5/0xe0
+[ 7772.000595]  generic_file_read_iter+0x83b/0xda0
+[ 7772.000598]  ? __remove_hrtimer+0x3c/0x90
+[ 7772.000600]  ? hrtimer_cancel+0x15/0x20
+[ 7772.000602]  ? futex_wait+0x21b/0x290
+[ 7772.000606]  fuse_file_read_iter+0xf6/0x120
+[ 7772.000610]  do_iter_readv_writev+0x1a3/0x1d0
+[ 7772.000612]  do_iter_read+0xe2/0x1a0
+[ 7772.000614]  vfs_readv+0x6e/0xb0
+[ 7772.000618]  ? _copy_from_user+0x3e/0x60
+[ 7772.000620]  do_preadv+0x93/0xd0
+[ 7772.000621]  __x64_sys_preadv+0x21/0x30
+[ 7772.000624]  do_syscall_64+0x57/0x190
+[ 7772.000628]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+[ 7772.000630] RIP: 0033:0x7fa798f0b5a8
+[ 7772.000632] Code: 3c 24 48 89 4c 24 18 e8 86 00 f8 ff 4c 8b 54 24 18 8b 3c 24 45 31 c0 41 89 c1 8b 54 24 14 48 8b 74 24 08 b8 27 01 00 00 0f 05 <48> 3d 00 f0 ff ff 77 2c 44 89 cf 48 89 04 24 e8 b4 00 f8 ff 48 8b
+[ 7772.000633] RSP: 002b:00007f9d623eb630 EFLAGS: 00000246 ORIG_RAX: 0000000000000127
+[ 7772.000635] RAX: ffffffffffffffda RBX: 00007f9d48949710 RCX: 00007fa798f0b5a8
+[ 7772.000636] RDX: 0000000000000020 RSI: 00007fa564007f20 RDI: 000000000000000a
+[ 7772.000637] RBP: 000055a5ead0e110 R08: 0000000000000000 R09: 0000000000000000
+[ 7772.000638] R10: 0000001610790000 R11: 0000000000000246 R12: 000055a5e924cc20
+[ 7772.000639] R13: 000055a5ead0e178 R14: 00007fa564010970 R15: 00007f9d623eb840
+[ 7774.729060] current pool page num is 10240 MB
+[ 7777.075381] watchdog: BUG: soft lockup - CPU#49 stuck for 22s! [page migrateion:4861]
+[ 7777.075383] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 7777.075418]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 7777.075430] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 7777.075431] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 7777.075451] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 7777.075453] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 7777.075455] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 7777.075456] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 7777.075458] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 7777.075458] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 7777.075459] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 7777.075460] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 7777.075461] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 7777.075462] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 7777.075463] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 7777.075464] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 7777.075465] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 7777.075466] PKRU: 55555554
+[ 7777.075466] Call Trace:
+[ 7777.075483]  pm_to_nvm+0x39/0x4f [kvm]
+[ 7777.075498]  begin_migration.cold+0x24/0x26 [kvm]
+[ 7777.075513]  pm+0x5f/0x70 [kvm]
+[ 7777.075515]  kthread+0x104/0x140
+[ 7777.075529]  ? begin_migration+0x40/0x40 [kvm]
+[ 7777.075530]  ? kthread_park+0x90/0x90
+[ 7777.075533]  ret_from_fork+0x1f/0x40
+[ 7805.075072] watchdog: BUG: soft lockup - CPU#49 stuck for 23s! [page migrateion:4861]
+[ 7805.075074] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 7805.075095]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 7805.075106] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 7805.075107] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 7805.075126] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 7805.075128] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 7805.075129] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 7805.075131] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 7805.075132] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 7805.075133] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 7805.075134] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 7805.075135] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 7805.075136] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 7805.075137] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 7805.075138] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 7805.075139] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 7805.075140] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 7805.075140] PKRU: 55555554
+[ 7805.075141] Call Trace:
+[ 7805.075158]  pm_to_nvm+0x39/0x4f [kvm]
+[ 7805.075173]  begin_migration.cold+0x24/0x26 [kvm]
+[ 7805.075188]  pm+0x5f/0x70 [kvm]
+[ 7805.075190]  kthread+0x104/0x140
+[ 7805.075203]  ? begin_migration+0x40/0x40 [kvm]
+[ 7805.075205]  ? kthread_park+0x90/0x90
+[ 7805.075207]  ret_from_fork+0x1f/0x40
+[ 7833.074764] watchdog: BUG: soft lockup - CPU#49 stuck for 23s! [page migrateion:4861]
+[ 7833.074766] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 7833.074785]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 7833.074795] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 7833.074797] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 7833.074814] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 7833.074815] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 7833.074816] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 7833.074818] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 7833.074819] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 7833.074820] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 7833.074821] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 7833.074822] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 7833.074823] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 7833.074824] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 7833.074825] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 7833.074826] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 7833.074827] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 7833.074828] PKRU: 55555554
+[ 7833.074828] Call Trace:
+[ 7833.074845]  pm_to_nvm+0x39/0x4f [kvm]
+[ 7833.074861]  begin_migration.cold+0x24/0x26 [kvm]
+[ 7833.074876]  pm+0x5f/0x70 [kvm]
+[ 7833.074877]  kthread+0x104/0x140
+[ 7833.074891]  ? begin_migration+0x40/0x40 [kvm]
+[ 7833.074892]  ? kthread_park+0x90/0x90
+[ 7833.074895]  ret_from_fork+0x1f/0x40
+[ 7861.074458] watchdog: BUG: soft lockup - CPU#49 stuck for 23s! [page migrateion:4861]
+[ 7861.074459] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 7861.074480]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 7861.074491] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 7861.074492] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 7861.074512] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 7861.074514] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 7861.074515] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 7861.074517] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 7861.074518] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 7861.074519] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 7861.074520] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 7861.074521] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 7861.074522] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 7861.074523] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 7861.074524] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 7861.074525] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 7861.074526] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 7861.074526] PKRU: 55555554
+[ 7861.074527] Call Trace:
+[ 7861.074544]  pm_to_nvm+0x39/0x4f [kvm]
+[ 7861.074559]  begin_migration.cold+0x24/0x26 [kvm]
+[ 7861.074574]  pm+0x5f/0x70 [kvm]
+[ 7861.074576]  kthread+0x104/0x140
+[ 7861.074589]  ? begin_migration+0x40/0x40 [kvm]
+[ 7861.074591]  ? kthread_park+0x90/0x90
+[ 7861.074593]  ret_from_fork+0x1f/0x40
+[ 7889.074151] watchdog: BUG: soft lockup - CPU#49 stuck for 23s! [page migrateion:4861]
+[ 7889.074152] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 7889.074175]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 7889.074186] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 7889.074187] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 7889.074206] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 7889.074207] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 7889.074209] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 7889.074210] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 7889.074211] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 7889.074212] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 7889.074213] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 7889.074214] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 7889.074215] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 7889.074216] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 7889.074217] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 7889.074218] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 7889.074219] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 7889.074220] PKRU: 55555554
+[ 7889.074220] Call Trace:
+[ 7889.074237]  pm_to_nvm+0x39/0x4f [kvm]
+[ 7889.074252]  begin_migration.cold+0x24/0x26 [kvm]
+[ 7889.074267]  pm+0x5f/0x70 [kvm]
+[ 7889.074269]  kthread+0x104/0x140
+[ 7889.074282]  ? begin_migration+0x40/0x40 [kvm]
+[ 7889.074284]  ? kthread_park+0x90/0x90
+[ 7889.074286]  ret_from_fork+0x1f/0x40
+[ 7917.073845] watchdog: BUG: soft lockup - CPU#49 stuck for 23s! [page migrateion:4861]
+[ 7917.073846] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 7917.073861]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 7917.073871] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 7917.073872] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 7917.073893] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 7917.073895] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 7917.073897] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 7917.073898] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 7917.073899] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 7917.073900] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 7917.073901] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 7917.073902] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 7917.073903] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 7917.073904] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 7917.073905] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 7917.073906] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 7917.073906] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 7917.073907] PKRU: 55555554
+[ 7917.073908] Call Trace:
+[ 7917.073924]  pm_to_nvm+0x39/0x4f [kvm]
+[ 7917.073939]  begin_migration.cold+0x24/0x26 [kvm]
+[ 7917.073954]  pm+0x5f/0x70 [kvm]
+[ 7917.073955]  kthread+0x104/0x140
+[ 7917.073969]  ? begin_migration+0x40/0x40 [kvm]
+[ 7917.073970]  ? kthread_park+0x90/0x90
+[ 7917.073972]  ret_from_fork+0x1f/0x40
+[ 7929.605710] rcu: INFO: rcu_sched self-detected stall on CPU
+[ 7929.605714] rcu: 	49-....: (59987 ticks this GP) idle=b46/1/0x4000000000000002 softirq=1743/1743 fqs=29884 
+[ 7929.605717] 	(t=60003 jiffies g=72593 q=144053)
+[ 7929.605719] NMI backtrace for cpu 49
+[ 7929.605721] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 7929.605722] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 7929.605723] Call Trace:
+[ 7929.605724]  <IRQ>
+[ 7929.605726]  dump_stack+0x6d/0x8b
+[ 7929.605728]  nmi_cpu_backtrace.cold+0x14/0x54
+[ 7929.605732]  ? lapic_can_unplug_cpu+0x80/0x80
+[ 7929.605734]  nmi_trigger_cpumask_backtrace+0xe8/0xf0
+[ 7929.605736]  arch_trigger_cpumask_backtrace+0x19/0x20
+[ 7929.605738]  rcu_dump_cpu_stacks+0x99/0xcb
+[ 7929.605740]  rcu_sched_clock_irq.cold+0x1d9/0x3c1
+[ 7929.605743]  update_process_times+0x2c/0x60
+[ 7929.605746]  tick_sched_handle+0x29/0x60
+[ 7929.605748]  tick_sched_timer+0x3d/0x80
+[ 7929.605749]  __hrtimer_run_queues+0xf7/0x270
+[ 7929.605751]  ? tick_sched_do_timer+0x60/0x60
+[ 7929.605753]  hrtimer_interrupt+0x109/0x220
+[ 7929.605754]  smp_apic_timer_interrupt+0x71/0x140
+[ 7929.605756]  apic_timer_interrupt+0xf/0x20
+[ 7929.605757]  </IRQ>
+[ 7929.605774] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 7929.605775] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 7929.605777] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 7929.605778] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 7929.605779] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 7929.605780] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 7929.605781] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 7929.605781] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 7929.605797]  ? pm_children+0xbd/0x100 [kvm]
+[ 7929.605813]  pm_to_nvm+0x39/0x4f [kvm]
+[ 7929.605827]  begin_migration.cold+0x24/0x26 [kvm]
+[ 7929.605841]  pm+0x5f/0x70 [kvm]
+[ 7929.605843]  kthread+0x104/0x140
+[ 7929.605855]  ? begin_migration+0x40/0x40 [kvm]
+[ 7929.605857]  ? kthread_park+0x90/0x90
+[ 7929.605859]  ret_from_fork+0x1f/0x40
+[ 7957.073409] watchdog: BUG: soft lockup - CPU#49 stuck for 22s! [page migrateion:4861]
+[ 7957.073410] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 7957.073427]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 7957.073436] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 7957.073437] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 7957.073457] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 7957.073459] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 7957.073460] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 7957.073461] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 7957.073462] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 7957.073463] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 7957.073464] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 7957.073465] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 7957.073466] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 7957.073467] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 7957.073468] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 7957.073469] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 7957.073470] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 7957.073471] PKRU: 55555554
+[ 7957.073471] Call Trace:
+[ 7957.073487]  pm_to_nvm+0x39/0x4f [kvm]
+[ 7957.073503]  begin_migration.cold+0x24/0x26 [kvm]
+[ 7957.073517]  pm+0x5f/0x70 [kvm]
+[ 7957.073519]  kthread+0x104/0x140
+[ 7957.073532]  ? begin_migration+0x40/0x40 [kvm]
+[ 7957.073534]  ? kthread_park+0x90/0x90
+[ 7957.073536]  ret_from_fork+0x1f/0x40
+[ 7985.073103] watchdog: BUG: soft lockup - CPU#49 stuck for 22s! [page migrateion:4861]
+[ 7985.073104] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 7985.073124]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 7985.073134] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 7985.073135] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 7985.073152] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 7985.073154] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 7985.073155] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 7985.073157] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 7985.073158] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 7985.073159] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 7985.073160] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 7985.073161] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 7985.073162] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 7985.073163] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 7985.073164] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 7985.073164] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 7985.073165] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 7985.073166] PKRU: 55555554
+[ 7985.073167] Call Trace:
+[ 7985.073183]  pm_to_nvm+0x39/0x4f [kvm]
+[ 7985.073198]  begin_migration.cold+0x24/0x26 [kvm]
+[ 7985.073213]  pm+0x5f/0x70 [kvm]
+[ 7985.073215]  kthread+0x104/0x140
+[ 7985.073228]  ? begin_migration+0x40/0x40 [kvm]
+[ 7985.073229]  ? kthread_park+0x90/0x90
+[ 7985.073231]  ret_from_fork+0x1f/0x40
+[ 8013.072799] watchdog: BUG: soft lockup - CPU#49 stuck for 22s! [page migrateion:4861]
+[ 8013.072801] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 8013.072819]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 8013.072830] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8013.072831] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8013.072850] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8013.072851] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8013.072852] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8013.072854] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8013.072855] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8013.072856] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8013.072857] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8013.072858] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8013.072859] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 8013.072860] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8013.072861] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 8013.072862] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 8013.072863] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 8013.072864] PKRU: 55555554
+[ 8013.072865] Call Trace:
+[ 8013.072881]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8013.072896]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8013.072911]  pm+0x5f/0x70 [kvm]
+[ 8013.072912]  kthread+0x104/0x140
+[ 8013.072926]  ? begin_migration+0x40/0x40 [kvm]
+[ 8013.072927]  ? kthread_park+0x90/0x90
+[ 8013.072930]  ret_from_fork+0x1f/0x40
+[ 8041.072495] watchdog: BUG: soft lockup - CPU#49 stuck for 22s! [page migrateion:4861]
+[ 8041.072496] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 8041.072518]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 8041.072528] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8041.072529] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8041.072546] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8041.072548] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8041.072550] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8041.072551] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8041.072552] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8041.072553] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8041.072554] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8041.072554] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8041.072556] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 8041.072557] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8041.072558] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 8041.072558] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 8041.072559] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 8041.072560] PKRU: 55555554
+[ 8041.072561] Call Trace:
+[ 8041.072577]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8041.072593]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8041.072608]  pm+0x5f/0x70 [kvm]
+[ 8041.072609]  kthread+0x104/0x140
+[ 8041.072623]  ? begin_migration+0x40/0x40 [kvm]
+[ 8041.072625]  ? kthread_park+0x90/0x90
+[ 8041.072627]  ret_from_fork+0x1f/0x40
+[ 8069.072191] watchdog: BUG: soft lockup - CPU#49 stuck for 22s! [page migrateion:4861]
+[ 8069.072192] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 8069.072212]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 8069.072221] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8069.072223] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8069.072240] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8069.072242] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8069.072243] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8069.072245] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8069.072246] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8069.072247] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8069.072248] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8069.072248] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8069.072249] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 8069.072250] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8069.072251] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 8069.072252] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 8069.072253] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 8069.072254] PKRU: 55555554
+[ 8069.072254] Call Trace:
+[ 8069.072271]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8069.072286]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8069.072301]  pm+0x5f/0x70 [kvm]
+[ 8069.072302]  kthread+0x104/0x140
+[ 8069.072315]  ? begin_migration+0x40/0x40 [kvm]
+[ 8069.072317]  ? kthread_park+0x90/0x90
+[ 8069.072319]  ret_from_fork+0x1f/0x40
+[ 8097.071887] watchdog: BUG: soft lockup - CPU#49 stuck for 22s! [page migrateion:4861]
+[ 8097.071888] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 8097.071907]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 8097.071917] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8097.071918] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8097.071937] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8097.071940] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8097.071941] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8097.071942] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8097.071943] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8097.071944] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8097.071945] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8097.071946] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8097.071948] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 8097.071949] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8097.071949] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 8097.071950] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 8097.071951] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 8097.071952] PKRU: 55555554
+[ 8097.071952] Call Trace:
+[ 8097.071969]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8097.071984]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8097.071999]  pm+0x5f/0x70 [kvm]
+[ 8097.072000]  kthread+0x104/0x140
+[ 8097.072014]  ? begin_migration+0x40/0x40 [kvm]
+[ 8097.072015]  ? kthread_park+0x90/0x90
+[ 8097.072017]  ret_from_fork+0x1f/0x40
+[ 8109.615754] rcu: INFO: rcu_sched self-detected stall on CPU
+[ 8109.615757] rcu: 	49-....: (104990 ticks this GP) idle=b46/1/0x4000000000000002 softirq=1743/1743 fqs=52385 
+[ 8109.615761] 	(t=105006 jiffies g=72593 q=156938)
+[ 8109.615764] NMI backtrace for cpu 49
+[ 8109.615766] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8109.615767] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8109.615768] Call Trace:
+[ 8109.615769]  <IRQ>
+[ 8109.615773]  dump_stack+0x6d/0x8b
+[ 8109.615774]  nmi_cpu_backtrace.cold+0x14/0x54
+[ 8109.615779]  ? lapic_can_unplug_cpu+0x80/0x80
+[ 8109.615781]  nmi_trigger_cpumask_backtrace+0xe8/0xf0
+[ 8109.615783]  arch_trigger_cpumask_backtrace+0x19/0x20
+[ 8109.615785]  rcu_dump_cpu_stacks+0x99/0xcb
+[ 8109.615787]  rcu_sched_clock_irq.cold+0x1d9/0x3c1
+[ 8109.615789]  update_process_times+0x2c/0x60
+[ 8109.615792]  tick_sched_handle+0x29/0x60
+[ 8109.615794]  tick_sched_timer+0x3d/0x80
+[ 8109.615796]  __hrtimer_run_queues+0xf7/0x270
+[ 8109.615797]  ? tick_sched_do_timer+0x60/0x60
+[ 8109.615799]  hrtimer_interrupt+0x109/0x220
+[ 8109.615801]  smp_apic_timer_interrupt+0x71/0x140
+[ 8109.615802]  apic_timer_interrupt+0xf/0x20
+[ 8109.615803]  </IRQ>
+[ 8109.615820] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8109.615822] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8109.615823] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8109.615824] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8109.615825] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8109.615826] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8109.615827] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8109.615828] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8109.615844]  ? pm_children+0xbd/0x100 [kvm]
+[ 8109.615859]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8109.615874]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8109.615889]  pm+0x5f/0x70 [kvm]
+[ 8109.615890]  kthread+0x104/0x140
+[ 8109.615903]  ? begin_migration+0x40/0x40 [kvm]
+[ 8109.615905]  ? kthread_park+0x90/0x90
+[ 8109.615907]  ret_from_fork+0x1f/0x40
+[ 8137.071454] watchdog: BUG: soft lockup - CPU#49 stuck for 23s! [page migrateion:4861]
+[ 8137.071455] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 8137.071479]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 8137.071490] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8137.071491] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8137.071508] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8137.071509] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8137.071511] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8137.071512] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8137.071513] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8137.071514] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8137.071515] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8137.071516] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8137.071517] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 8137.071518] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8137.071519] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 8137.071520] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 8137.071520] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 8137.071521] PKRU: 55555554
+[ 8137.071522] Call Trace:
+[ 8137.071539]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8137.071554]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8137.071569]  pm+0x5f/0x70 [kvm]
+[ 8137.071571]  kthread+0x104/0x140
+[ 8137.071584]  ? begin_migration+0x40/0x40 [kvm]
+[ 8137.071586]  ? kthread_park+0x90/0x90
+[ 8137.071588]  ret_from_fork+0x1f/0x40
+[ 8165.071151] watchdog: BUG: soft lockup - CPU#49 stuck for 23s! [page migrateion:4861]
+[ 8165.071152] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 8165.071173]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 8165.071183] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8165.071184] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8165.071202] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8165.071204] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8165.071205] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8165.071206] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8165.071207] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8165.071208] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8165.071210] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8165.071211] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8165.071212] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 8165.071213] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8165.071214] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 8165.071215] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 8165.071215] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 8165.071216] PKRU: 55555554
+[ 8165.071217] Call Trace:
+[ 8165.071234]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8165.071249]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8165.071264]  pm+0x5f/0x70 [kvm]
+[ 8165.071266]  kthread+0x104/0x140
+[ 8165.071279]  ? begin_migration+0x40/0x40 [kvm]
+[ 8165.071281]  ? kthread_park+0x90/0x90
+[ 8165.071283]  ret_from_fork+0x1f/0x40
+[ 8193.070848] watchdog: BUG: soft lockup - CPU#49 stuck for 22s! [page migrateion:4861]
+[ 8193.070850] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 8193.070869]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 8193.070879] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8193.070880] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8193.070901] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8193.070903] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8193.070904] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8193.070906] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8193.070907] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8193.070908] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8193.070909] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8193.070910] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8193.070911] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 8193.070912] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8193.070913] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 8193.070914] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 8193.070915] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 8193.070915] PKRU: 55555554
+[ 8193.070916] Call Trace:
+[ 8193.070933]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8193.070948]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8193.070963]  pm+0x5f/0x70 [kvm]
+[ 8193.070964]  kthread+0x104/0x140
+[ 8193.070978]  ? begin_migration+0x40/0x40 [kvm]
+[ 8193.070979]  ? kthread_park+0x90/0x90
+[ 8193.070981]  ret_from_fork+0x1f/0x40
+[ 8221.070546] watchdog: BUG: soft lockup - CPU#49 stuck for 22s! [page migrateion:4861]
+[ 8221.070547] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 8221.070566]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 8221.070575] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8221.070576] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8221.070592] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8221.070594] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8221.070595] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8221.070596] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8221.070597] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8221.070598] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8221.070599] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8221.070600] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8221.070601] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 8221.070602] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8221.070603] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 8221.070604] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 8221.070605] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 8221.070606] PKRU: 55555554
+[ 8221.070606] Call Trace:
+[ 8221.070622]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8221.070638]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8221.070653]  pm+0x5f/0x70 [kvm]
+[ 8221.070654]  kthread+0x104/0x140
+[ 8221.070668]  ? begin_migration+0x40/0x40 [kvm]
+[ 8221.070670]  ? kthread_park+0x90/0x90
+[ 8221.070672]  ret_from_fork+0x1f/0x40
+[ 8249.070243] watchdog: BUG: soft lockup - CPU#49 stuck for 22s! [page migrateion:4861]
+[ 8249.070245] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 8249.070263]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 8249.070272] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8249.070273] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8249.070289] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8249.070290] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8249.070292] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8249.070293] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8249.070294] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8249.070295] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8249.070296] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8249.070297] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8249.070298] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 8249.070299] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8249.070300] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 8249.070301] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 8249.070301] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 8249.070302] PKRU: 55555554
+[ 8249.070303] Call Trace:
+[ 8249.070319]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8249.070334]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8249.070349]  pm+0x5f/0x70 [kvm]
+[ 8249.070351]  kthread+0x104/0x140
+[ 8249.070364]  ? begin_migration+0x40/0x40 [kvm]
+[ 8249.070366]  ? kthread_park+0x90/0x90
+[ 8249.070368]  ret_from_fork+0x1f/0x40
+[ 8277.069942] watchdog: BUG: soft lockup - CPU#49 stuck for 22s! [page migrateion:4861]
+[ 8277.069943] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 8277.069961]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 8277.069971] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8277.069972] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8277.069988] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8277.069989] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8277.069990] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8277.069992] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8277.069993] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8277.069994] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8277.069995] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8277.069995] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8277.069996] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 8277.069997] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8277.069998] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 8277.069999] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 8277.070000] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 8277.070001] PKRU: 55555554
+[ 8277.070001] Call Trace:
+[ 8277.070018]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8277.070033]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8277.070047]  pm+0x5f/0x70 [kvm]
+[ 8277.070049]  kthread+0x104/0x140
+[ 8277.070062]  ? begin_migration+0x40/0x40 [kvm]
+[ 8277.070064]  ? kthread_park+0x90/0x90
+[ 8277.070066]  ret_from_fork+0x1f/0x40
+[ 8289.625808] rcu: INFO: rcu_sched self-detected stall on CPU
+[ 8289.625811] rcu: 	49-....: (149993 ticks this GP) idle=b46/1/0x4000000000000002 softirq=1743/1743 fqs=74886 
+[ 8289.625815] 	(t=150009 jiffies g=72593 q=208669)
+[ 8289.625817] NMI backtrace for cpu 49
+[ 8289.625819] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8289.625820] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8289.625820] Call Trace:
+[ 8289.625821]  <IRQ>
+[ 8289.625825]  dump_stack+0x6d/0x8b
+[ 8289.625826]  nmi_cpu_backtrace.cold+0x14/0x54
+[ 8289.625830]  ? lapic_can_unplug_cpu+0x80/0x80
+[ 8289.625832]  nmi_trigger_cpumask_backtrace+0xe8/0xf0
+[ 8289.625834]  arch_trigger_cpumask_backtrace+0x19/0x20
+[ 8289.625836]  rcu_dump_cpu_stacks+0x99/0xcb
+[ 8289.625838]  rcu_sched_clock_irq.cold+0x1d9/0x3c1
+[ 8289.625842]  update_process_times+0x2c/0x60
+[ 8289.625845]  tick_sched_handle+0x29/0x60
+[ 8289.625847]  tick_sched_timer+0x3d/0x80
+[ 8289.625848]  __hrtimer_run_queues+0xf7/0x270
+[ 8289.625850]  ? tick_sched_do_timer+0x60/0x60
+[ 8289.625852]  hrtimer_interrupt+0x109/0x220
+[ 8289.625854]  smp_apic_timer_interrupt+0x71/0x140
+[ 8289.625855]  apic_timer_interrupt+0xf/0x20
+[ 8289.625856]  </IRQ>
+[ 8289.625872] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8289.625873] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8289.625874] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8289.625876] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8289.625877] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8289.625878] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8289.625879] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8289.625880] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8289.625895]  ? pm_children+0xbd/0x100 [kvm]
+[ 8289.625911]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8289.625926]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8289.625940]  pm+0x5f/0x70 [kvm]
+[ 8289.625941]  kthread+0x104/0x140
+[ 8289.625954]  ? begin_migration+0x40/0x40 [kvm]
+[ 8289.625955]  ? kthread_park+0x90/0x90
+[ 8289.625957]  ret_from_fork+0x1f/0x40
+[ 8317.069511] watchdog: BUG: soft lockup - CPU#49 stuck for 22s! [page migrateion:4861]
+[ 8317.069512] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 8317.069535]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 8317.069546] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8317.069547] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8317.069571] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8317.069572] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8317.069574] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8317.069575] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8317.069576] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8317.069577] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8317.069578] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8317.069579] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8317.069580] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 8317.069581] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8317.069582] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 8317.069583] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 8317.069584] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 8317.069585] PKRU: 55555554
+[ 8317.069585] Call Trace:
+[ 8317.069602]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8317.069617]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8317.069632]  pm+0x5f/0x70 [kvm]
+[ 8317.069634]  kthread+0x104/0x140
+[ 8317.069648]  ? begin_migration+0x40/0x40 [kvm]
+[ 8317.069649]  ? kthread_park+0x90/0x90
+[ 8317.069651]  ret_from_fork+0x1f/0x40
+[ 8345.069209] watchdog: BUG: soft lockup - CPU#49 stuck for 22s! [page migrateion:4861]
+[ 8345.069210] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 8345.069233]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 8345.069241] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8345.069242] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8345.069258] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8345.069260] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8345.069261] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8345.069262] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8345.069263] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8345.069264] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8345.069265] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8345.069266] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8345.069267] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 8345.069268] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8345.069269] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 8345.069270] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 8345.069271] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 8345.069271] PKRU: 55555554
+[ 8345.069272] Call Trace:
+[ 8345.069288]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8345.069303]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8345.069318]  pm+0x5f/0x70 [kvm]
+[ 8345.069319]  kthread+0x104/0x140
+[ 8345.069333]  ? begin_migration+0x40/0x40 [kvm]
+[ 8345.069334]  ? kthread_park+0x90/0x90
+[ 8345.069336]  ret_from_fork+0x1f/0x40
+[ 8373.068908] watchdog: BUG: soft lockup - CPU#49 stuck for 23s! [page migrateion:4861]
+[ 8373.068908] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 8373.068927]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 8373.068937] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8373.068938] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8373.068954] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8373.068956] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8373.068957] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8373.068958] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8373.068959] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8373.068960] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8373.068961] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8373.068962] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8373.068963] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 8373.068964] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8373.068965] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 8373.068966] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 8373.068967] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 8373.068967] PKRU: 55555554
+[ 8373.068968] Call Trace:
+[ 8373.068984]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8373.068999]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8373.069014]  pm+0x5f/0x70 [kvm]
+[ 8373.069015]  kthread+0x104/0x140
+[ 8373.069029]  ? begin_migration+0x40/0x40 [kvm]
+[ 8373.069030]  ? kthread_park+0x90/0x90
+[ 8373.069032]  ret_from_fork+0x1f/0x40
+[ 8401.068607] watchdog: BUG: soft lockup - CPU#49 stuck for 23s! [page migrateion:4861]
+[ 8401.068608] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 8401.068630]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 8401.068638] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8401.068639] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8401.068654] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8401.068656] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8401.068657] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8401.068658] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8401.068659] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8401.068660] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8401.068661] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8401.068662] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8401.068663] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 8401.068664] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8401.068665] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 8401.068666] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 8401.068667] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 8401.068668] PKRU: 55555554
+[ 8401.068669] Call Trace:
+[ 8401.068685]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8401.068700]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8401.068715]  pm+0x5f/0x70 [kvm]
+[ 8401.068717]  kthread+0x104/0x140
+[ 8401.068730]  ? begin_migration+0x40/0x40 [kvm]
+[ 8401.068732]  ? kthread_park+0x90/0x90
+[ 8401.068734]  ret_from_fork+0x1f/0x40
+[ 8429.068305] watchdog: BUG: soft lockup - CPU#49 stuck for 23s! [page migrateion:4861]
+[ 8429.068307] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 8429.068325]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 8429.068335] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8429.068336] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8429.068352] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8429.068354] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8429.068355] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8429.068357] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8429.068358] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8429.068359] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8429.068360] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8429.068360] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8429.068362] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 8429.068363] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8429.068363] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 8429.068364] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 8429.068365] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 8429.068366] PKRU: 55555554
+[ 8429.068366] Call Trace:
+[ 8429.068383]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8429.068398]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8429.068413]  pm+0x5f/0x70 [kvm]
+[ 8429.068414]  kthread+0x104/0x140
+[ 8429.068428]  ? begin_migration+0x40/0x40 [kvm]
+[ 8429.068429]  ? kthread_park+0x90/0x90
+[ 8429.068432]  ret_from_fork+0x1f/0x40
+[ 8457.068113] watchdog: BUG: soft lockup - CPU#49 stuck for 23s! [page migrateion:4861]
+[ 8457.068114] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 8457.068133]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 8457.068142] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8457.068142] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8457.068159] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8457.068160] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8457.068161] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8457.068163] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8457.068164] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8457.068165] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8457.068166] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8457.068166] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8457.068168] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 8457.068169] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8457.068170] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 8457.068170] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 8457.068171] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 8457.068172] PKRU: 55555554
+[ 8457.068173] Call Trace:
+[ 8457.068189]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8457.068205]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8457.068219]  pm+0x5f/0x70 [kvm]
+[ 8457.068221]  kthread+0x104/0x140
+[ 8457.068235]  ? begin_migration+0x40/0x40 [kvm]
+[ 8457.068236]  ? kthread_park+0x90/0x90
+[ 8457.068238]  ret_from_fork+0x1f/0x40
+[ 8469.636040] rcu: INFO: rcu_sched self-detected stall on CPU
+[ 8469.636043] rcu: 	49-....: (194996 ticks this GP) idle=b46/1/0x4000000000000002 softirq=1743/1743 fqs=97387 
+[ 8469.636048] 	(t=195012 jiffies g=72593 q=215765)
+[ 8469.636050] NMI backtrace for cpu 49
+[ 8469.636051] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8469.636052] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8469.636053] Call Trace:
+[ 8469.636054]  <IRQ>
+[ 8469.636059]  dump_stack+0x6d/0x8b
+[ 8469.636061]  nmi_cpu_backtrace.cold+0x14/0x54
+[ 8469.636066]  ? lapic_can_unplug_cpu+0x80/0x80
+[ 8469.636069]  nmi_trigger_cpumask_backtrace+0xe8/0xf0
+[ 8469.636071]  arch_trigger_cpumask_backtrace+0x19/0x20
+[ 8469.636074]  rcu_dump_cpu_stacks+0x99/0xcb
+[ 8469.636075]  rcu_sched_clock_irq.cold+0x1d9/0x3c1
+[ 8469.636079]  update_process_times+0x2c/0x60
+[ 8469.636083]  tick_sched_handle+0x29/0x60
+[ 8469.636085]  tick_sched_timer+0x3d/0x80
+[ 8469.636086]  __hrtimer_run_queues+0xf7/0x270
+[ 8469.636088]  ? tick_sched_do_timer+0x60/0x60
+[ 8469.636090]  hrtimer_interrupt+0x109/0x220
+[ 8469.636092]  smp_apic_timer_interrupt+0x71/0x140
+[ 8469.636094]  apic_timer_interrupt+0xf/0x20
+[ 8469.636094]  </IRQ>
+[ 8469.636110] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8469.636111] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8469.636113] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8469.636114] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8469.636115] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8469.636116] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8469.636117] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8469.636118] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8469.636133]  ? pm_children+0xbd/0x100 [kvm]
+[ 8469.636148]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8469.636163]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8469.636176]  pm+0x5f/0x70 [kvm]
+[ 8469.636178]  kthread+0x104/0x140
+[ 8469.636191]  ? begin_migration+0x40/0x40 [kvm]
+[ 8469.636192]  ? kthread_park+0x90/0x90
+[ 8469.636194]  ret_from_fork+0x1f/0x40
+[ 8497.067869] watchdog: BUG: soft lockup - CPU#49 stuck for 22s! [page migrateion:4861]
+[ 8497.067870] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 8497.067892]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 8497.067900] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8497.067901] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8497.067916] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8497.067918] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8497.067919] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8497.067920] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8497.067921] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8497.067922] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8497.067923] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8497.067924] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8497.067925] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 8497.067926] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8497.067927] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 8497.067928] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 8497.067929] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 8497.067929] PKRU: 55555554
+[ 8497.067930] Call Trace:
+[ 8497.067946]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8497.067961]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8497.067976]  pm+0x5f/0x70 [kvm]
+[ 8497.067977]  kthread+0x104/0x140
+[ 8497.067991]  ? begin_migration+0x40/0x40 [kvm]
+[ 8497.067992]  ? kthread_park+0x90/0x90
+[ 8497.067994]  ret_from_fork+0x1f/0x40
+[ 8525.067692] watchdog: BUG: soft lockup - CPU#49 stuck for 22s! [page migrateion:4861]
+[ 8525.067693] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 8525.067713]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 8525.067721] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8525.067722] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8525.067737] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8525.067739] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8525.067740] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8525.067742] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8525.067742] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8525.067743] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8525.067744] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8525.067745] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8525.067746] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 8525.067747] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8525.067748] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 8525.067749] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 8525.067750] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 8525.067750] PKRU: 55555554
+[ 8525.067751] Call Trace:
+[ 8525.067767]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8525.067782]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8525.067797]  pm+0x5f/0x70 [kvm]
+[ 8525.067799]  kthread+0x104/0x140
+[ 8525.067812]  ? begin_migration+0x40/0x40 [kvm]
+[ 8525.067813]  ? kthread_park+0x90/0x90
+[ 8525.067815]  ret_from_fork+0x1f/0x40
+[ 8553.067509] watchdog: BUG: soft lockup - CPU#49 stuck for 22s! [page migrateion:4861]
+[ 8553.067510] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 8553.067531]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 8553.067539] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8553.067540] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8553.067556] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8553.067558] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8553.067559] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8553.067560] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8553.067561] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8553.067562] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8553.067563] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8553.067564] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8553.067565] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 8553.067566] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8553.067567] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 8553.067568] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 8553.067569] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 8553.067570] PKRU: 55555554
+[ 8553.067570] Call Trace:
+[ 8553.067587]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8553.067602]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8553.067616]  pm+0x5f/0x70 [kvm]
+[ 8553.067618]  kthread+0x104/0x140
+[ 8553.067631]  ? begin_migration+0x40/0x40 [kvm]
+[ 8553.067633]  ? kthread_park+0x90/0x90
+[ 8553.067635]  ret_from_fork+0x1f/0x40
+[ 8581.067321] watchdog: BUG: soft lockup - CPU#49 stuck for 22s! [page migrateion:4861]
+[ 8581.067323] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 8581.067344]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 8581.067352] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8581.067353] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8581.067369] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8581.067371] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8581.067372] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8581.067373] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8581.067374] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8581.067375] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8581.067376] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8581.067377] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8581.067378] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 8581.067380] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8581.067380] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 8581.067381] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 8581.067382] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 8581.067383] PKRU: 55555554
+[ 8581.067384] Call Trace:
+[ 8581.067400]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8581.067415]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8581.067430]  pm+0x5f/0x70 [kvm]
+[ 8581.067432]  kthread+0x104/0x140
+[ 8581.067445]  ? begin_migration+0x40/0x40 [kvm]
+[ 8581.067446]  ? kthread_park+0x90/0x90
+[ 8581.067449]  ret_from_fork+0x1f/0x40
+[ 8609.067129] watchdog: BUG: soft lockup - CPU#49 stuck for 22s! [page migrateion:4861]
+[ 8609.067130] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 8609.067144]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 8609.067151] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8609.067152] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8609.067169] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8609.067170] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8609.067171] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8609.067173] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8609.067174] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8609.067175] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8609.067175] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8609.067176] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8609.067177] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 8609.067178] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8609.067179] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 8609.067180] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 8609.067181] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 8609.067182] PKRU: 55555554
+[ 8609.067182] Call Trace:
+[ 8609.067199]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8609.067214]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8609.067229]  pm+0x5f/0x70 [kvm]
+[ 8609.067230]  kthread+0x104/0x140
+[ 8609.067244]  ? begin_migration+0x40/0x40 [kvm]
+[ 8609.067246]  ? kthread_park+0x90/0x90
+[ 8609.067248]  ret_from_fork+0x1f/0x40
+[ 8637.066932] watchdog: BUG: soft lockup - CPU#49 stuck for 22s! [page migrateion:4861]
+[ 8637.066933] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 8637.066952]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 8637.066960] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8637.066961] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8637.066976] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8637.066978] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8637.066979] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8637.066981] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8637.066982] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8637.066982] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8637.066983] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8637.066984] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8637.066985] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 8637.066986] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8637.066987] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 8637.066988] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 8637.066989] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 8637.066990] PKRU: 55555554
+[ 8637.066990] Call Trace:
+[ 8637.067006]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8637.067021]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8637.067036]  pm+0x5f/0x70 [kvm]
+[ 8637.067038]  kthread+0x104/0x140
+[ 8637.067051]  ? begin_migration+0x40/0x40 [kvm]
+[ 8637.067053]  ? kthread_park+0x90/0x90
+[ 8637.067055]  ret_from_fork+0x1f/0x40
+[ 8649.646844] rcu: INFO: rcu_sched self-detected stall on CPU
+[ 8649.646847] rcu: 	49-....: (239999 ticks this GP) idle=b46/1/0x4000000000000002 softirq=1743/1743 fqs=119888 
+[ 8649.646852] 	(t=240015 jiffies g=72593 q=223978)
+[ 8649.646854] NMI backtrace for cpu 49
+[ 8649.646855] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8649.646856] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8649.646857] Call Trace:
+[ 8649.646858]  <IRQ>
+[ 8649.646861]  dump_stack+0x6d/0x8b
+[ 8649.646863]  nmi_cpu_backtrace.cold+0x14/0x54
+[ 8649.646867]  ? lapic_can_unplug_cpu+0x80/0x80
+[ 8649.646869]  nmi_trigger_cpumask_backtrace+0xe8/0xf0
+[ 8649.646871]  arch_trigger_cpumask_backtrace+0x19/0x20
+[ 8649.646873]  rcu_dump_cpu_stacks+0x99/0xcb
+[ 8649.646875]  rcu_sched_clock_irq.cold+0x1d9/0x3c1
+[ 8649.646878]  update_process_times+0x2c/0x60
+[ 8649.646882]  tick_sched_handle+0x29/0x60
+[ 8649.646884]  tick_sched_timer+0x3d/0x80
+[ 8649.646885]  __hrtimer_run_queues+0xf7/0x270
+[ 8649.646887]  ? tick_sched_do_timer+0x60/0x60
+[ 8649.646889]  hrtimer_interrupt+0x109/0x220
+[ 8649.646891]  smp_apic_timer_interrupt+0x71/0x140
+[ 8649.646892]  apic_timer_interrupt+0xf/0x20
+[ 8649.646893]  </IRQ>
+[ 8649.646908] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8649.646909] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8649.646911] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8649.646912] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8649.646913] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8649.646914] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8649.646915] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8649.646915] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8649.646931]  ? pm_children+0xbd/0x100 [kvm]
+[ 8649.646946]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8649.646961]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8649.646975]  pm+0x5f/0x70 [kvm]
+[ 8649.646976]  kthread+0x104/0x140
+[ 8649.646989]  ? begin_migration+0x40/0x40 [kvm]
+[ 8649.646990]  ? kthread_park+0x90/0x90
+[ 8649.646992]  ret_from_fork+0x1f/0x40
+[ 8677.066643] watchdog: BUG: soft lockup - CPU#49 stuck for 23s! [page migrateion:4861]
+[ 8677.066644] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 8677.066664]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 8677.066672] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8677.066673] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8677.066691] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8677.066693] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8677.066694] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8677.066695] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8677.066696] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8677.066697] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8677.066698] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8677.066699] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8677.066700] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 8677.066701] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8677.066702] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 8677.066703] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 8677.066704] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 8677.066705] PKRU: 55555554
+[ 8677.066705] Call Trace:
+[ 8677.066722]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8677.066737]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8677.066752]  pm+0x5f/0x70 [kvm]
+[ 8677.066753]  kthread+0x104/0x140
+[ 8677.066767]  ? begin_migration+0x40/0x40 [kvm]
+[ 8677.066769]  ? kthread_park+0x90/0x90
+[ 8677.066771]  ret_from_fork+0x1f/0x40
+[ 8705.066437] watchdog: BUG: soft lockup - CPU#49 stuck for 23s! [page migrateion:4861]
+[ 8705.066438] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 8705.066452]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 8705.066459] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8705.066460] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8705.066475] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8705.066477] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8705.066478] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8705.066480] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8705.066481] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8705.066482] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8705.066483] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8705.066484] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8705.066485] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 8705.066486] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8705.066487] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 8705.066488] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 8705.066489] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 8705.066489] PKRU: 55555554
+[ 8705.066490] Call Trace:
+[ 8705.066506]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8705.066521]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8705.066536]  pm+0x5f/0x70 [kvm]
+[ 8705.066537]  kthread+0x104/0x140
+[ 8705.066551]  ? begin_migration+0x40/0x40 [kvm]
+[ 8705.066552]  ? kthread_park+0x90/0x90
+[ 8705.066554]  ret_from_fork+0x1f/0x40
+[ 8733.066226] watchdog: BUG: soft lockup - CPU#49 stuck for 23s! [page migrateion:4861]
+[ 8733.066227] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 8733.066246]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 8733.066256] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8733.066257] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8733.066273] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8733.066274] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8733.066276] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8733.066277] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8733.066278] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8733.066279] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8733.066280] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8733.066281] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8733.066282] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 8733.066283] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8733.066284] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 8733.066285] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 8733.066286] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 8733.066287] PKRU: 55555554
+[ 8733.066287] Call Trace:
+[ 8733.066304]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8733.066319]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8733.066333]  pm+0x5f/0x70 [kvm]
+[ 8733.066335]  kthread+0x104/0x140
+[ 8733.066349]  ? begin_migration+0x40/0x40 [kvm]
+[ 8733.066350]  ? kthread_park+0x90/0x90
+[ 8733.066352]  ret_from_fork+0x1f/0x40
+[ 8761.066012] watchdog: BUG: soft lockup - CPU#49 stuck for 22s! [page migrateion:4861]
+[ 8761.066013] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 8761.066035]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 8761.066045] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8761.066046] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8761.066063] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8761.066065] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8761.066066] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8761.066068] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8761.066069] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8761.066070] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8761.066071] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8761.066072] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8761.066073] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 8761.066074] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8761.066075] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 8761.066076] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 8761.066077] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 8761.066077] PKRU: 55555554
+[ 8761.066078] Call Trace:
+[ 8761.066094]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8761.066109]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8761.066124]  pm+0x5f/0x70 [kvm]
+[ 8761.066126]  kthread+0x104/0x140
+[ 8761.066139]  ? begin_migration+0x40/0x40 [kvm]
+[ 8761.066140]  ? kthread_park+0x90/0x90
+[ 8761.066142]  ret_from_fork+0x1f/0x40
+[ 8789.065795] watchdog: BUG: soft lockup - CPU#49 stuck for 22s! [page migrateion:4861]
+[ 8789.065796] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 8789.065815]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 8789.065824] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8789.065824] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8789.065840] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8789.065842] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8789.065843] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8789.065844] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8789.065845] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8789.065846] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8789.065847] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8789.065848] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8789.065849] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 8789.065850] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8789.065851] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 8789.065852] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 8789.065853] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 8789.065854] PKRU: 55555554
+[ 8789.065855] Call Trace:
+[ 8789.065871]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8789.065886]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8789.065901]  pm+0x5f/0x70 [kvm]
+[ 8789.065903]  kthread+0x104/0x140
+[ 8789.065916]  ? begin_migration+0x40/0x40 [kvm]
+[ 8789.065918]  ? kthread_park+0x90/0x90
+[ 8789.065920]  ret_from_fork+0x1f/0x40
+[ 8817.065574] watchdog: BUG: soft lockup - CPU#49 stuck for 22s! [page migrateion:4861]
+[ 8817.065575] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 8817.065592]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 8817.065602] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8817.065603] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8817.065620] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8817.065621] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8817.065622] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8817.065624] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8817.065625] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8817.065626] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8817.065627] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8817.065628] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8817.065629] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 8817.065630] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8817.065631] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 8817.065632] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 8817.065633] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 8817.065633] PKRU: 55555554
+[ 8817.065634] Call Trace:
+[ 8817.065650]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8817.065665]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8817.065680]  pm+0x5f/0x70 [kvm]
+[ 8817.065682]  kthread+0x104/0x140
+[ 8817.065695]  ? begin_migration+0x40/0x40 [kvm]
+[ 8817.065696]  ? kthread_park+0x90/0x90
+[ 8817.065699]  ret_from_fork+0x1f/0x40
+[ 8829.657477] rcu: INFO: rcu_sched self-detected stall on CPU
+[ 8829.657480] rcu: 	49-....: (285002 ticks this GP) idle=b46/1/0x4000000000000002 softirq=1743/1743 fqs=142390 
+[ 8829.657484] 	(t=285018 jiffies g=72593 q=230642)
+[ 8829.657486] NMI backtrace for cpu 49
+[ 8829.657488] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8829.657489] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8829.657489] Call Trace:
+[ 8829.657491]  <IRQ>
+[ 8829.657495]  dump_stack+0x6d/0x8b
+[ 8829.657496]  nmi_cpu_backtrace.cold+0x14/0x54
+[ 8829.657501]  ? lapic_can_unplug_cpu+0x80/0x80
+[ 8829.657503]  nmi_trigger_cpumask_backtrace+0xe8/0xf0
+[ 8829.657505]  arch_trigger_cpumask_backtrace+0x19/0x20
+[ 8829.657508]  rcu_dump_cpu_stacks+0x99/0xcb
+[ 8829.657510]  rcu_sched_clock_irq.cold+0x1d9/0x3c1
+[ 8829.657513]  update_process_times+0x2c/0x60
+[ 8829.657517]  tick_sched_handle+0x29/0x60
+[ 8829.657519]  tick_sched_timer+0x3d/0x80
+[ 8829.657521]  __hrtimer_run_queues+0xf7/0x270
+[ 8829.657522]  ? tick_sched_do_timer+0x60/0x60
+[ 8829.657524]  hrtimer_interrupt+0x109/0x220
+[ 8829.657526]  smp_apic_timer_interrupt+0x71/0x140
+[ 8829.657527]  apic_timer_interrupt+0xf/0x20
+[ 8829.657528]  </IRQ>
+[ 8829.657543] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8829.657545] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8829.657546] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8829.657547] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8829.657548] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8829.657549] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8829.657550] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8829.657551] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8829.657566]  ? pm_children+0xbd/0x100 [kvm]
+[ 8829.657582]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8829.657596]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8829.657610]  pm+0x5f/0x70 [kvm]
+[ 8829.657612]  kthread+0x104/0x140
+[ 8829.657625]  ? begin_migration+0x40/0x40 [kvm]
+[ 8829.657626]  ? kthread_park+0x90/0x90
+[ 8829.657628]  ret_from_fork+0x1f/0x40
+[ 8857.065254] watchdog: BUG: soft lockup - CPU#49 stuck for 22s! [page migrateion:4861]
+[ 8857.065255] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 8857.065278]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 8857.065287] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8857.065288] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8857.065304] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8857.065306] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8857.065307] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8857.065308] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8857.065309] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8857.065310] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8857.065311] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8857.065312] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8857.065314] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 8857.065315] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8857.065316] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 8857.065317] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 8857.065318] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 8857.065318] PKRU: 55555554
+[ 8857.065319] Call Trace:
+[ 8857.065335]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8857.065350]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8857.065364]  pm+0x5f/0x70 [kvm]
+[ 8857.065366]  kthread+0x104/0x140
+[ 8857.065379]  ? begin_migration+0x40/0x40 [kvm]
+[ 8857.065381]  ? kthread_park+0x90/0x90
+[ 8857.065383]  ret_from_fork+0x1f/0x40
+[ 8885.065027] watchdog: BUG: soft lockup - CPU#49 stuck for 22s! [page migrateion:4861]
+[ 8885.065029] Modules linked in: kvm(OE) intel_rapl_msr intel_rapl_common kmem isst_if_common device_dax nd_pmem dax_pmem nd_btt dax_pmem_core skx_edac rpcrdma sunrpc rdma_ucm ib_iser rdma_cm ib_cm libiscsi scsi_transport_iscsi iw_cm xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 xt_tcpudp ip6table_mangle ip6table_nat iptable_mangle iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink ip6table_filter ip6_tables iptable_filter bpfilter bridge stp llc x86_pkg_temp_thermal coretemp overlay i40iw ipmi_ssif ib_uverbs ib_core crct10dif_pclmul ghash_clmulni_intel aesni_intel joydev input_leds ast crypto_simd cryptd glue_helper drm_vram_helper rapl ttm drm_kms_helper intel_cstate i2c_algo_bit fb_sys_fops syscopyarea sysfillrect sysimgblt mei_me mei ioatdma dca ipmi_si ipmi_devintf ipmi_msghandler nfit mac_hid acpi_power_meter drm sch_fq_codel parport_pc ppdev lp parport ip_tables x_tables autofs4 btrfs zstd_compress raid10 raid456 async_raid6_recov
+[ 8885.065054]  async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic usbhid hid ses enclosure scsi_transport_sas i40e aacraid crc32_pclmul ahci i2c_i801 libahci lpc_ich wmi [last unloaded: kvm]
+[ 8885.065066] CPU: 49 PID: 4861 Comm: page migrateion Tainted: G    B D    OEL    5.4.142+ #19
+[ 8885.065069] Hardware name: Inspur NF5280M5/YZMB-01360-102, BIOS 4.1.0 06/01/2020
+[ 8885.065087] RIP: 0010:pm_children+0xca/0x100 [kvm]
+[ 8885.065089] Code: 6e d5 c0 ba ff ff ff ff e8 93 51 78 f5 48 89 c7 48 3d 00 f0 ff ff 77 05 e8 63 77 79 f5 41 83 c7 01 45 01 f4 44 39 7d d4 75 87 <8b> 83 18 01 00 00 41 39 c7 75 f5 48 83 c4 10 5b 41 5c 41 5d 41 5e
+[ 8885.065091] RSP: 0018:ffffa06b0aaebe78 EFLAGS: 00000202 ORIG_RAX: ffffffffffffff13
+[ 8885.065092] RAX: 0000000000000000 RBX: ffff940a37071800 RCX: 0000000000000000
+[ 8885.065093] RDX: 000006fe5f6cf01c RSI: 0000000000000206 RDI: 0000000000000206
+[ 8885.065094] RBP: ffffa06b0aaebeb0 R08: ffffffffb745e800 R09: 0000000000000000
+[ 8885.065095] R10: ffff940a1787bc18 R11: ffff9341909ead78 R12: 000000000002b9ba
+[ 8885.065096] R13: 0000000000000000 R14: 000000000002b9ba R15: 0000000000000001
+[ 8885.065097] FS:  0000000000000000(0000) GS:ffff934190a40000(0000) knlGS:0000000000000000
+[ 8885.065098] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 8885.065099] CR2: 00007ffd9ec23700 CR3: 000000cb36a0a001 CR4: 00000000007626e0
+[ 8885.065100] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 8885.065101] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 8885.065101] PKRU: 55555554
+[ 8885.065102] Call Trace:
+[ 8885.065119]  pm_to_nvm+0x39/0x4f [kvm]
+[ 8885.065134]  begin_migration.cold+0x24/0x26 [kvm]
+[ 8885.065149]  pm+0x5f/0x70 [kvm]
+[ 8885.065152]  kthread+0x104/0x140
+[ 8885.065165]  ? begin_migration+0x40/0x40 [kvm]
+[ 8885.065167]  ? kthread_park+0x90/0x90
+[ 8885.065169]  ret_from_fork+0x1f/0x40

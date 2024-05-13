@@ -1,0 +1,3 @@
+./perf kvm stat -e dTLB-loads,dTLB-load-misses,dTLB-stores,dTLB-store-misses,DTLB_LOAD_MISSES.WALK_ACTIVE,DTLB_STORE_MISSES.WALK_ACTIVE,EPT.WALK_PENDING -C 48-55
+
+#./perf stat -e dTLB-load-misses,dTLB-store-misses,DTLB_LOAD_MISSES.WALK_ACTIVE,DTLB_STORE_MISSES.WALK_ACTIVE,EPT.WALK_PENDING -C 48-55 sleep 10

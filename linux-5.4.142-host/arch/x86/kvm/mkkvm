@@ -1,0 +1,2 @@
+#bin/bash
+make -C /home/ss/lcd/HugeScope/linux-5.4.142-host M=/home/ss/lcd/HugeScope/linux-5.4.142-host/arch/x86/kvm modules
