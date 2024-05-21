@@ -27,12 +27,35 @@ This repository contains the artifact for reproducing our ATC'23 paper "Taming H
 
 Our artifact should run on any Linux distribution. The current scripts are developed for **Ubuntu 20.04.6 LTS**. The `dep.sh` contains some dependencies that the compilation kernel may need.
 
-The `HS-TMM` requires a machine equipped with Intel Optane persistent memory. We run our evaluation on a dual-socket Intel Cascade Lake-SP system running at 2.2 GHz with 24 cores/48 threads per socket. The system enables the
-APP direct mode and mounts PMem as a NUMA node.
+The `HS-TMM` requires a machine equipped with Intel Optane persistent memory. We run our evaluation on a dual-socket Intel Cascade Lake-SP system running at 2.2 GHz with 24 cores/48 threads per socket. The system enables the APP direct mode and mounts PMem as a NUMA node. If you don't have a NVM environment, please see [Use DRAM as the slow memory](#0-use-dram-as-the-slow-memory).
 
 HugeScope does not need to modify the Guest OS, so it supports running any virtual machine image. Here we provide some open source benchmark and qemu startup scripts running in the virtual machine in the benchmarks directory.
 
 # Setup 
+
+### 0. Use DRAM as the slow memory:
+
+If you don't have NVM hardware, you can use remote DRAM as slow memory to test HS-TMM.
+
+However, because our implementation is bound to an PMEM in node 3, it needs to be modified in the following two places.
+
+The implementation code of HS-TMM needs to modify the Slow memory node to the numa node id of your remote DRAM.  
+```
+$ cd linux-5.4.142-host/arch/x86/kvm
+$ vim ss_work.h
+# Modify the NVM_NODE of 25 lines to the node of the remote DRAM.
+# You can also modify the size (GB) of fast memory (26L) and slow memory (27L) here.
+$ make
+$ rmmod kvm
+$ insmod kvm
+
+```
+
+The VM startup script also needs to be modified.
+```
+$ vim benchmarks/run_vm_for_hs_tmm.sh
+# Modify the host_nodes of 11 lines to the node of the remote DRAM.
+```
 
 ### 1. Install the dependencies:
 ```
