@@ -75,8 +75,8 @@ For Ubuntu:
 ```
 $ make -j8              
 $ make -j8 modules 
-$ sudo make install
 $ sudo make modules_install
+$ sudo make install
 ```
 Reboot the machine to the installed 5.4.142 kernel. 
 
