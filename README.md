@@ -1,6 +1,6 @@
 # Artifact Evaluation Submission for HugeScope [ATC '24] 
 
-This repository contains the artifact for reproducing our ATC'23 paper "Taming Hot Bloat Under Virtualization with HugeScope". 
+This repository contains the artifact for reproducing our ATC'24 paper "Taming Hot Bloat Under Virtualization with HugeScope". 
 
 # Table of Contents
 * [Overview](#overview)
